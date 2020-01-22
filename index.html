@@ -159,7 +159,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2020/01/22/%E5%89%91%E6%8C%87offer/">剑指offer</a>
+      <a class="article-title" href="/2020/01/22/%E5%89%91%E6%8C%87offer/">剑指offer题解</a>
     </h1>
   
 
@@ -172,7 +172,11 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="第一题"><a href="#第一题" class="headerlink" title="第一题"></a>第一题</h2><p>##第二题</p>
+        <h2 id="把数组排成最小的数"><a href="#把数组排成最小的数" class="headerlink" title="把数组排成最小的数"></a>把数组排成最小的数</h2><p>题目</p>
+<p>输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，则打印出这三个数字能排成的最小数字为321323。</p>
+<p>思路<br>重写sort的compare函数，若 str1＋str2&lt;str2+str1  则str1排在在前的规则排序,<br>例   2 21 因为 212 &lt; 221 所以 排序后为 21   2<br>排序后，遍历ans，添加到字符串返回即可。</p>
+<p>import java.util.*;<br>public class Solution {<br>    public String PrintMinNumber(int [] numbers) {<br>        String s=””;<br>        ArrayList <Integer> ans=new ArrayList();<br>        for(int i=0;i&lt;numbers.length;i++){<br>            ans.add(numbers[i]);<br>        }<br>        Collections.sort(ans,new Comparator<Integer>(){<br>           public int compare(Integer s1,Integer s2){<br>               String str1=s1+””+s2;<br>               String str2=s2+””+s1;<br>               return str1.compareTo(str2);<br>           }<br>        });<br>        for(Integer temp:ans)<br>            s+=temp;<br>        return s;<br>    }<br>}</p>
+<p>##第二题</p>
 <p>#第三题</p>
 
       
