@@ -15,12 +15,14 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="SpringBoot学习笔记自动配置原理：pom.xml   ​    spring-boot-dependencies：核心依赖在父工程中 ​    写入或者引入springboot依赖时，不需要制定版本，因为有版本仓库  启动器  &lt;dependency&gt;         &lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://yoursite.com/Users/jiangcheng/blog/source/_posts/img/%E6%88%AA%E5%B1%8F2020-01-26%E4%B8%8B%E5%8D%8812.33.55.png">
+<meta property="og:image" content="http://yoursite.com/Users/jiangcheng/blog/source/_posts/img/%E6%88%AA%E5%B1%8F2020-01-28%E4%B8%8B%E5%8D%8811.49.35.png">
+<meta property="og:image" content="http://yoursite.com/Users/jiangcheng/blog/source/_posts/img/%E6%88%AA%E5%B1%8F2020-01-28%E4%B8%8B%E5%8D%8811.55.12.png">
+<meta property="og:image" content="http://yoursite.com/Users/jiangcheng/blog/source/_posts/img/%E6%88%AA%E5%B1%8F2020-02-06%E4%B8%8A%E5%8D%888.58.13.png">
 <meta property="article:published_time" content="2020-01-25T12:51:36.386Z">
-<meta property="article:modified_time" content="2020-01-27T07:54:08.683Z">
+<meta property="article:modified_time" content="2020-02-08T08:25:59.151Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://yoursite.com/Users/jiangcheng/blog/source/_posts/img/%E6%88%AA%E5%B1%8F2020-01-26%E4%B8%8B%E5%8D%8812.33.55.png">
+<meta name="twitter:image" content="http://yoursite.com/Users/jiangcheng/blog/source/_posts/img/%E6%88%AA%E5%B1%8F2020-01-28%E4%B8%8B%E5%8D%8811.49.35.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -186,95 +188,157 @@
 <li><pre><code class="xml"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
         <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
         <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-starter<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
-      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></code></pre>
-</li>
-</ul>
-<ul>
-<li>就是Springboot 启动场景</li>
-<li>springboot-starter-web 会自动导入所有web环境所有依赖</li>
-<li>springboot会将所有场景变成启动器</li>
-<li>需要什么功能，就找什么启动器就可以了</li>
-</ul>
-<p>主程序</p>
-<ul>
-<li></li>
-</ul>
-<p>结论 springboot所有自动配置在启动时候扫描并且加载：spring.factories所有自动配置类都在这里，但是不一定生效，要判断条件是否成立，只有导入相应start，就有对应启动器，有了启动器，自动装配就会生效，然后配置成功</p>
-<p>​    1.springboot在启动时，从类路径/METE-INF/spring.factories获取指定值</p>
-<p>​    2.这些自动配置导入容器，自动配置生效</p>
-<p>​    3.现在springboot利用此方法代替我们，变成自动配置</p>
-<p>​    4.整合javaee，解决方案和自动配置的东西在spring-boot-autoconfigure-2.2.0.RELEASE.jar这个包下</p>
-<p>SpringApplication.run</p>
-<p>1.推断该项目是web还是普通项目</p>
-<p>2.</p>
-<p>3.</p>
-<p>4.</p>
-<p>关于SpringBoot，我的理解</p>
-<p>1.自动装配</p>
-<p>2.run()</p>
-<p>全面接管SpringMVC的配置</p>
-<p>JSR303校验</p>
-<img src="/Users/jiangcheng/blog/source/_posts/img/截屏2020-01-26下午12.33.55.png" alt="截屏2020-01-26下午12.33.55" style="zoom:50%;" />
+      <span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="comment"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">* 就是Springboot 启动场景</span><br><span class="line">* springboot-starter-web 会自动导入所有web环境所有依赖</span><br><span class="line">* springboot会将所有场景变成启动器</span><br><span class="line">* 需要什么功能，就找什么启动器就可以了</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">主程序</span><br><span class="line"></span><br><span class="line">* </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">结论 springboot所有自动配置在启动时候扫描并且加载：spring.factories所有自动配置类都在这里，但是不一定生效，要判断条件是否成立，只有导入相应start，就有对应启动器，有了启动器，自动装配就会生效，然后配置成功</span><br><span class="line"></span><br><span class="line">​    1.springboot在启动时，从类路径&#x2F;METE-INF&#x2F;spring.factories获取指定值</span><br><span class="line"></span><br><span class="line">​    2.这些自动配置导入容器，自动配置生效</span><br><span class="line"></span><br><span class="line">​    3.现在springboot利用此方法代替我们，变成自动配置</span><br><span class="line"></span><br><span class="line">​    4.整合javaee，解决方案和自动配置的东西在spring-boot-autoconfigure-2.2.0.RELEASE.jar这个包下</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">SpringApplication.run</span><br><span class="line"></span><br><span class="line">1.推断该项目是web还是普通项目</span><br><span class="line"></span><br><span class="line">2.</span><br><span class="line"></span><br><span class="line">3.</span><br><span class="line"></span><br><span class="line">4.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">关于SpringBoot，我的理解</span><br><span class="line"></span><br><span class="line">1.自动装配</span><br><span class="line"></span><br><span class="line">2.run()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">全面接管SpringMVC的配置</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">JSR303校验</span><br><span class="line"></span><br><span class="line">&lt;img src&#x3D;&quot;&#x2F;Users&#x2F;jiangcheng&#x2F;blog&#x2F;source&#x2F;_posts&#x2F;img&#x2F;截屏2020-01-26下午12.33.55.png&quot; alt&#x3D;&quot;截屏2020-01-26下午12.33.55&quot; style&#x3D;&quot;zoom:50%;&quot; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">yml文件文件路径下的优先级</span><br><span class="line"></span><br><span class="line">1. file: .&#x2F;config&#x2F;</span><br><span class="line">2. file: .&#x2F;</span><br><span class="line">3. classpath:&#x2F;config&#x2F;</span><br><span class="line">4. classpath:&#x2F;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">自动配置原理</span><br><span class="line"></span><br><span class="line">1. SpringBoot启动会加载大量的自动配置类</span><br><span class="line"></span><br><span class="line">2. 观察我们需要的功能有没有在SpringBoot默认写好的自动配置类中</span><br><span class="line"></span><br><span class="line">3. 再看这个自动配置类配置了哪些组件（只要我们要用的组件存在其中就不用再配置了）</span><br><span class="line"></span><br><span class="line">4. 给容器自动配置类添加组件的时候，会从properties类中获取某些属性，我们只需要在配置文件中指定这些属性的值即可</span><br><span class="line"></span><br><span class="line">   xxxxAutoConfiguration：自动配置类</span><br><span class="line"></span><br><span class="line">   xxxxProperties:封装配置文件中相关属性</span><br><span class="line"></span><br><span class="line">### SpringBoot Web 开发：</span><br><span class="line"></span><br><span class="line">* 导入静态资源</span><br><span class="line"></span><br><span class="line">* 首页</span><br><span class="line"></span><br><span class="line">* jsp，模板引擎Thymeleaf</span><br><span class="line"></span><br><span class="line">* 装配扩展SpringMVC</span><br><span class="line"></span><br><span class="line">* 增删改查</span><br><span class="line"></span><br><span class="line">* 拦截器</span><br><span class="line"></span><br><span class="line">* 国际化</span><br><span class="line"></span><br><span class="line">  </span><br><span class="line"></span><br><span class="line">#### 静态资源</span><br><span class="line"></span><br><span class="line">1. 在SpringBoot，可以用以下方式处理静态资源</span><br><span class="line"></span><br><span class="line">   1.  webjars   **localhost:8080&#x2F;webjars&#x2F;**</span><br><span class="line">   2. public,static,&#x2F;** ,resouces     **localhost:8080&#x2F;**</span><br><span class="line"></span><br><span class="line">2. 优先级： resouces&gt;static(默认)&gt;public</span><br><span class="line"></span><br><span class="line">   ​	</span><br><span class="line"></span><br><span class="line">#### 模板引擎Thymeleaf</span><br><span class="line"></span><br><span class="line">结论： 导入thymeleaf相关依赖，有源码得知，默认路径为templates目录，因此我们把html放在templates目录即可。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">在SpringBoot中，xxxxConfiguration可以帮助我们扩展配置</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 网站开发流程</span><br><span class="line"></span><br><span class="line">1. 前端，layui模板</span><br><span class="line">2. 设计数据库 （难点）</span><br><span class="line">3. 前端独立运行</span><br><span class="line">4. 数据接口对接，json</span><br><span class="line">5. 前后端调试</span><br><span class="line"></span><br><span class="line">1有一套熟悉的后台模板 ：x-admin</span><br><span class="line"></span><br><span class="line">2 前端界面：通过前端框架，组合一个网站页面</span><br><span class="line"></span><br><span class="line">3网站独立运行</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### Mybatis</span><br><span class="line"></span><br><span class="line">整合包</span><br><span class="line"></span><br><span class="line">Mybatis-spring-boot-starter</span><br><span class="line"></span><br><span class="line">1. 导入包</span><br><span class="line">2. 配置文件</span><br><span class="line">3. mybatis配置</span><br><span class="line">4. 编写sql</span><br><span class="line">5. service层调用dao层</span><br><span class="line">6. controller调用service</span><br><span class="line"></span><br><span class="line">M: 数据和业务</span><br><span class="line"></span><br><span class="line">C：交换</span><br><span class="line"></span><br><span class="line">V：HTML</span><br><span class="line"></span><br><span class="line">#### Mybatis的目录结构</span><br><span class="line"></span><br><span class="line">&lt;img src&#x3D;&quot;&#x2F;Users&#x2F;jiangcheng&#x2F;blog&#x2F;source&#x2F;_posts&#x2F;img&#x2F;截屏2020-01-28下午6.54.29.png&quot; alt&#x3D;&quot;截屏2020-01-28下午6.54.29&quot; style&#x3D;&quot;zoom:50%;&quot; &#x2F;&gt;</span><br><span class="line"></span><br><span class="line">要引入依赖</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;xml</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.mybatis.spring.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mybatis-spring-boot-starter&lt;&#x2F;artifactId&gt;</span><br><span class="line">			&lt;version&gt;2.1.1&lt;&#x2F;version&gt;</span><br><span class="line">		&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;mysql&lt;&#x2F;groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;mysql-connector-java&lt;&#x2F;artifactId&gt;</span><br><span class="line">			&lt;scope&gt;runtime&lt;&#x2F;scope&gt;</span><br><span class="line">		&lt;&#x2F;dependency&gt;</span><br><span class="line">&lt;dependency&gt;</span><br><span class="line">			&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;</span><br><span class="line">			&lt;artifactId&gt;spring-boot-starter-jdbc&lt;&#x2F;artifactId&gt;</span><br><span class="line">		&lt;&#x2F;dependency&gt;</span><br></pre></td></tr></table></figure></span>
 
-<p>yml文件文件路径下的优先级</p>
-<ol>
-<li>file: ./config/</li>
-<li>file: ./</li>
-<li>classpath:/config/</li>
-<li>classpath:/</li>
-</ol>
-<p>自动配置原理</p>
-<ol>
-<li><p>SpringBoot启动会加载大量的自动配置类</p>
-</li>
-<li><p>观察我们需要的功能有没有在SpringBoot默认写好的自动配置类中</p>
-</li>
-<li><p>再看这个自动配置类配置了哪些组件（只要我们要用的组件存在其中就不用再配置了）</p>
-</li>
-<li><p>给容器自动配置类添加组件的时候，会从properties类中获取某些属性，我们只需要在配置文件中指定这些属性的值即可</p>
-<p>xxxxAutoConfiguration：自动配置类</p>
-<p>xxxxProperties:封装配置文件中相关属性</p>
-</li>
-</ol>
-<h3 id="SpringBoot-Web-开发："><a href="#SpringBoot-Web-开发：" class="headerlink" title="SpringBoot Web 开发："></a>SpringBoot Web 开发：</h3><ul>
-<li><p>导入静态资源</p>
-</li>
-<li><p>首页</p>
-</li>
-<li><p>jsp，模板引擎Thymeleaf</p>
-</li>
-<li><p>装配扩展SpringMVC</p>
-</li>
-<li><p>增删改查</p>
-</li>
-<li><p>拦截器</p>
-</li>
-<li><p>国际化</p>
+
+</code></pre>
 </li>
 </ul>
-<h4 id="静态资源"><a href="#静态资源" class="headerlink" title="静态资源"></a>静态资源</h4><ol>
-<li><p>在SpringBoot，可以用以下方式处理静态资源</p>
+<p>properties的配置</p>
+<p>classpath代表resources目录</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">spring.datasource.username=root</span><br><span class="line">spring.datasource.password=</span><br><span class="line">spring.datasource.url=jdbc:mysql://localhost:3306/test?serverTimezone=UTC&amp;useUnicode=true&amp;characterEncoding=utf-8</span><br><span class="line">spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver</span><br><span class="line"></span><br><span class="line">#整合mybatis</span><br><span class="line">mybatis.type-aliases-package=com.jc.pojo</span><br><span class="line">mybatis.mapper-locations=classpath:mybatis/mapper/*.xml</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="SpringSecurity（安全）"><a href="#SpringSecurity（安全）" class="headerlink" title="SpringSecurity（安全）"></a>SpringSecurity（安全）</h3><p>Web开发，安全第一，过滤器，拦截器</p>
+<p>功能性需求：否</p>
+<p>设计之初要考虑这个问题</p>
+<p>有shrio ，SpringSecurity 框架</p>
+<p>主要是认证功能和授权功能</p>
+<ul>
+<li>功能权限</li>
+<li>访问权限</li>
+<li>菜单权限</li>
+<li>拦截器 过滤器：大量原声代码 ～～～冗余</li>
+</ul>
+<p>antMatchers是权限分配，给网页授权<img src="/Users/jiangcheng/blog/source/_posts/img/%E6%88%AA%E5%B1%8F2020-01-28%E4%B8%8B%E5%8D%8811.49.35.png" alt="截屏2020-01-28下午11.49.35"></p>
+<p>身份认证</p>
+<img src="/Users/jiangcheng/blog/source/_posts/img/截屏2020-01-28下午11.55.12.png" alt="截屏2020-01-28下午11.55.12" style="zoom:50%;" />
+
+<p>这样运行会报错，因为这个没有加密</p>
+<p>要在auth.inMemoryAuthenticaion.passwordEncoder(new BCryptPasswordEncoder()) 对密码加密才可以</p>
+<h3 id="Shrio"><a href="#Shrio" class="headerlink" title="Shrio"></a>Shrio</h3><p>三个重要的组件</p>
 <ol>
-<li>webjars   <strong>localhost:8080/webjars/</strong></li>
-<li>public,static,/** ,resouces     <strong>localhost:8080/</strong></li>
+<li>Subject 用户</li>
+<li>SecutityManager 管理用户</li>
+<li>Realm 连接数据</li>
+</ol>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--</span></span><br><span class="line"><span class="comment">    整合shrio和springboot项目的包</span></span><br><span class="line"><span class="comment">--&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.shiro<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>shiro-spring<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.4.1<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+<h3 id="Swagger"><a href="#Swagger" class="headerlink" title="Swagger"></a>Swagger</h3><h5 id="前后端分离"><a href="#前后端分离" class="headerlink" title="前后端分离"></a>前后端分离</h5><p>Vue+SpringBoot</p>
+<ul>
+<li>号称世界最流行的Api框架</li>
+<li>RestFul Api 文档在线自动生成工具 =》Api文档与Api定义同步更新</li>
+<li>直接运行，可以在线测试Api接口；</li>
+<li>支持多种语言</li>
+</ul>
+<p>官网 <a href="https://swagger.io/" target="_blank" rel="noopener">https://swagger.io/</a></p>
+<p>在项目使用Swagger 需要springbox</p>
+<ul>
+<li>swagger2</li>
+<li>ui</li>
+</ul>
+<p>SpringBoot 集成Swagger</p>
+<ol>
+<li><p>新建一个SpringBoot项目</p>
+</li>
+<li><p>导入相关依赖</p>
+<ol>
+<li><pre><code class="xml"><span class="comment">&lt;!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui --&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger-ui<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+<span class="comment">&lt;!-- https://mvnrepository.com/artifact/io.springfox/springfox-swagger2 --&gt;</span>
+<span class="tag">&lt;<span class="name">dependency</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>io.springfox<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>springfox-swagger2<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span>
+    <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.9.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span>
+<span class="tag">&lt;/<span class="name">dependency</span>&gt;</span>
+
+<span class="comment"><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">      </span><br><span class="line"></span><br><span class="line">3. 编写一个hello工程</span><br><span class="line"></span><br><span class="line">4. 配置Swagger &#x3D;&#x3D;》Config</span><br><span class="line"></span><br><span class="line">   &#96;&#96;&#96;java</span><br><span class="line">   @Configuration</span><br><span class="line">   @EnableSwagger2 &#x2F;&#x2F;开启Swagger</span><br><span class="line">   public class SwaggerConfig &#123;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></span></code></pre>
+</li>
 </ol>
 </li>
-<li><p>优先级： resouces&gt;static(默认)&gt;public</p>
-<p>​    </p>
+<li><p>测试运行 <a href="http://localhost:8080/swagger-ui.html" target="_blank" rel="noopener">http://localhost:8080/swagger-ui.html</a></p>
 </li>
 </ol>
-<h4 id="模板引擎Thymeleaf"><a href="#模板引擎Thymeleaf" class="headerlink" title="模板引擎Thymeleaf"></a>模板引擎Thymeleaf</h4><p>结论： 导入thymeleaf相关依赖，有源码得知，默认路径为templates目录，因此我们把html放在templates目录即可。</p>
-<p>在SpringBoot中，xxxxConfiguration可以帮助我们扩展配置</p>
-<h3 id="网站开发流程"><a href="#网站开发流程" class="headerlink" title="网站开发流程"></a>网站开发流程</h3><ol>
-<li>前端，layui模板</li>
-<li>设计数据库 （难点）</li>
-<li>前端独立运行</li>
-<li>数据接口对接，json</li>
-<li>前后端调试</li>
+<h5 id="配置Swagger"><a href="#配置Swagger" class="headerlink" title="配置Swagger"></a>配置Swagger</h5><p>​    Swagger的bean实例 Docket；</p>
+<h5 id="配置Swagger扫描接口"><a href="#配置Swagger扫描接口" class="headerlink" title="配置Swagger扫描接口"></a>配置Swagger扫描接口</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span><span class="comment">//配置了Swagger的docket bean实例</span></span><br><span class="line">   <span class="function"><span class="keyword">public</span> Docket <span class="title">docket</span><span class="params">()</span></span></span><br><span class="line"><span class="function">   </span>&#123;</span><br><span class="line">       <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">               .apiInfo(apiInfo())</span><br><span class="line">               .select()</span><br><span class="line">               <span class="comment">//RequestHandlerSelectors配置要扫描的接口</span></span><br><span class="line">               <span class="comment">//basePackage 制定要扫描的包</span></span><br><span class="line">               <span class="comment">//any()扫描全部</span></span><br><span class="line">               <span class="comment">//none()都不扫描</span></span><br><span class="line">               <span class="comment">//withClassAnnotation 扫描类上的注解</span></span><br><span class="line">               <span class="comment">//withMethodAnnotation 方法上的注解</span></span><br><span class="line">               <span class="comment">//path 过滤某个路径</span></span><br><span class="line">               .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.jc.swagger.controller"</span>))</span><br><span class="line">               .paths(PathSelectors.ant(<span class="string">"/jc/**"</span>))</span><br><span class="line">               .build();</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置是否启动Swagger</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span><span class="comment">//配置了Swagger的docket bean实例</span></span><br><span class="line"> <span class="function"><span class="keyword">public</span> Docket <span class="title">docket</span><span class="params">()</span></span></span><br><span class="line"><span class="function"> </span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">             .apiInfo(apiInfo())</span><br><span class="line">             <span class="comment">//enable 是否启动Swagger2  如果false。则Swagger2不能在浏览器访问</span></span><br><span class="line">             .enable(<span class="keyword">false</span>)</span><br><span class="line">             .select()</span><br><span class="line">             .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.jc.swagger.controller"</span>))</span><br><span class="line">             <span class="comment">//.paths(PathSelectors.ant("/jc/**"))</span></span><br><span class="line">             .build();</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+
+<p>Swagger在生产环境使用，在发布的时候不用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span><span class="comment">//配置了Swagger的docket bean实例</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">docket</span><span class="params">(Environment environment)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="comment">//设置要显示的Swagger</span></span><br><span class="line">        Profiles profile=Profiles.of(<span class="string">"dev"</span>);</span><br><span class="line">        <span class="comment">//判断是否处于自己的设定环境之中</span></span><br><span class="line">        <span class="keyword">boolean</span> flag=environment.acceptsProfiles(profile);</span><br><span class="line">     </span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2)</span><br><span class="line">                .apiInfo(apiInfo())</span><br><span class="line">                <span class="comment">//enable 是否启动Swagger2  如果false。则Swagger2不能在浏览器访问</span></span><br><span class="line">                .enable(flag)</span><br><span class="line">                .select()</span><br><span class="line">                .apis(RequestHandlerSelectors.basePackage(<span class="string">"com.jc.swagger.controller"</span>))</span><br><span class="line">                <span class="comment">//.paths(PathSelectors.ant("/jc/**"))</span></span><br><span class="line">                .build();</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+<p>配置API文档分组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">groupName(<span class="string">"jc"</span>)</span><br></pre></td></tr></table></figure>
+
+<p>配置多个分组</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">docket1</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2).groupName(<span class="string">"group1"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">docket2</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2).groupName(<span class="string">"group2"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Bean</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> Docket <span class="title">docket3</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="keyword">new</span> Docket(DocumentationType.SWAGGER_2).groupName(<span class="string">"group3"</span>);</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+
+
+
+<p>实体类配置</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ApiModel</span>(<span class="string">"用户实体类"</span>)</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">User</span> </span>&#123;</span><br><span class="line">    <span class="meta">@ApiModelProperty</span>(<span class="string">"用户名"</span>)</span><br><span class="line">    <span class="keyword">private</span> String username;</span><br><span class="line">    <span class="meta">@ApiModelProperty</span>(<span class="string">"密码"</span>)</span><br><span class="line">    <span class="keyword">private</span> String password;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>总结</p>
+<ol>
+<li>给一些比较难理解的属性和接口写注释</li>
+<li>接口文档实时更新</li>
+<li>可以在线测试</li>
 </ol>
-<p>1有一套熟悉的后台模板 ：x-admin</p>
-<p>2 前端界面：通过前端框架，组合一个网站页面</p>
-<p>3网站独立运行</p>
+<p>注意 在发布的时候要把Swagger 关闭</p>
+<h3 id="任务"><a href="#任务" class="headerlink" title="任务"></a>任务</h3><p>异步任务</p>
+<p>定时任务</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">TaskScheduler  任务调度者</span><br><span class="line">TaskExecutor   任务执行者</span><br><span class="line"></span><br><span class="line">@EnableScheduling//开启定时功能注解</span><br><span class="line">@Scheduled //什么时候执行</span><br><span class="line"></span><br><span class="line">Cron表达式</span><br></pre></td></tr></table></figure>
+
+<p>邮件发送</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">spring.mail.username=2916861843@qq.com</span><br><span class="line">#去qq那里生成</span><br><span class="line">spring.mail.password=fyjiffhjzyncdefb</span><br><span class="line">spring.mail.host=smtp.qq.com</span><br><span class="line">#开启加密验证</span><br><span class="line">spring.mail.properties.mail.smtl.ssl.enable=true;</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Dubbo"><a href="#Dubbo" class="headerlink" title="Dubbo"></a>Dubbo</h3><p>什么是Dubbo？ Dubbo是一个高性能    ，轻量级的java开源环境，三大核心功能是：1面向接口的远程方法调用，智能容错和负载均衡，以及服务自动注册和发现    <img src="/Users/jiangcheng/blog/source/_posts/img/截屏2020-02-06上午8.58.13.png" alt="截屏2020-02-06上午8.58.13" style="zoom:50%;" /></p>
+<ol>
+<li>服务提供者 Provider：暴露服务的服务提供方，服务提供者在启动时，向注册中心提供自己提供的服务。</li>
+<li>服务消费者 Consumer：调用远程服务的服务消费方，服务消费方在启动时，向注册中心订阅服务，从服务提供者地址列表中，基于负载均衡算法，选一台服务提供者调用，如果失败，再调用另外一台</li>
+<li>注册中心 Register：Register中心返回服务者地址列表给消费者，如果有变更，Register会基于长连接推送变更数据给消费者</li>
+<li>监控中心 Count：服务消费者和提供者，在内存中累计调用次数和调用时间，定时每分钟统计数据到监控中心</li>
+</ol>
+<p>zookeeper 注册中心</p>
+<p>dubbo-admin 是一个监控管理后台，查看我们注册了哪些服务，哪些服务被消费</p>
+<p>Dubbo jar包~</p>
+<p>步骤</p>
+<p>前提 zookeeper启动</p>
+<ol>
+<li>提供者提供服务<ol>
+<li>导入依赖</li>
+<li>配置注册中心的地址以及服务发现名，和要扫描的包</li>
+<li>在想要被注册的服务上，增加@Service注解</li>
+</ol>
+</li>
+<li>消费者如何消费<ol>
+<li>导入依赖</li>
+<li>配置注册中心地址，配置自己服务名</li>
+<li>从远程注入服务 @Reference</li>
+</ol>
+</li>
+</ol>
+<h3 id="SpringCloud"><a href="#SpringCloud" class="headerlink" title="SpringCloud"></a>SpringCloud</h3><p> 什么是微服务？</p>
+<p>​    微服务是一个架构模式，将单一的应用程序分成一组小的服务，每个服务运行在其独立的自己进程内,模块化，每个微服务（每个服务对应一个demo，如支付，订单..）可以有自己对应的数据库</p>
+<p>微服务之间如何通信</p>
+<p>SpringBoot 与SpringCloud</p>
+<p>SpringBoot专注于高速，方便的开发单个个体微服务</p>
+<p>SpringCloud关注全局服务治理框架</p>
 
       
 
@@ -367,6 +431,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2020/02/05/%E7%AE%97%E6%B3%95%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          算法总结
+        
+      </div>
+    </a>
   
   
     <a href="/2020/01/22/%E5%89%91%E6%8C%87offer/" id="article-nav-older" class="article-nav-link-wrap">
