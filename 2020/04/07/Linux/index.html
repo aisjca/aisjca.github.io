@@ -6,15 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yoursite.com">
-  <title>Archives: 2020 | Hexo</title>
+  <title>Linux | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2020/index.html">
+  <meta name="description" content="Top命令    查看进程相关信息 注意Load Avg这是系统的负载均衡，三个数字分别是 系统1分钟，5分钟，15分钟的平均负载值，如果三个数相加除以3乘以100%高于60%，代表系统压力重 uptime命令行也可以查Load Avg CPUvmstat查看全部cpu 字段解释procs ​    ：r  运行和等待cpu时间片进程数，原则上1核cpu运行队列不要超过2，整个系统的运行队列不能超">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux">
+<meta property="og:url" content="http://yoursite.com/2020/04/07/Linux/index.html">
 <meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="Top命令    查看进程相关信息 注意Load Avg这是系统的负载均衡，三个数字分别是 系统1分钟，5分钟，15分钟的平均负载值，如果三个数相加除以3乘以100%高于60%，代表系统压力重 uptime命令行也可以查Load Avg CPUvmstat查看全部cpu 字段解释procs ​    ：r  运行和等待cpu时间片进程数，原则上1核cpu运行队列不要超过2，整个系统的运行队列不能超">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="http://yoursite.com/Users/jiangcheng/blog/source/_posts/Linux/top.png">
+<meta property="article:published_time" content="2020-04-07T15:43:33.847Z">
+<meta property="article:modified_time" content="2020-04-08T06:13:35.990Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://yoursite.com/Users/jiangcheng/blog/source/_posts/Linux/top.png">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -150,295 +156,190 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-Linux" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/08/github/" class="archive-article-date">
-  	<time datetime="2020-04-08T06:23:23.580Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-08</time>
-</a>
-        </div>
-    	 
+      <header class="article-header">
+        
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/08/github/">github</a>
+    <h1 class="article-title" itemprop="name">
+      Linux
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/04/07/Linux/" class="archive-article-date">
+        
+        <a href="/2020/04/07/Linux/" class="archive-article-date">
   	<time datetime="2020-04-07T15:43:33.847Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-04-07</time>
 </a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/04/07/Linux/">Linux</a>
-    </h1>
-  
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Top命令"><a href="#Top命令" class="headerlink" title="Top命令"></a>Top命令</h1><img src="/Users/jiangcheng/blog/source/_posts/Linux/top.png" alt="top" style="zoom:50%;" />
 
-        <div class="article-info info-on-right">
-          
-          
 
+
+<p>查看进程相关信息</p>
+<h5 id="注意Load-Avg"><a href="#注意Load-Avg" class="headerlink" title="注意Load Avg"></a>注意Load Avg</h5><p>这是系统的负载均衡，三个数字分别是 系统1分钟，5分钟，15分钟的平均负载值，如果三个数相加除以3乘以100%高于60%，代表系统压力重</p>
+<p>uptime命令行也可以查Load Avg</p>
+<h1 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h1><h5 id="vmstat"><a href="#vmstat" class="headerlink" title="vmstat"></a>vmstat</h5><p>查看全部cpu</p>
+<h5 id="字段解释"><a href="#字段解释" class="headerlink" title="字段解释"></a>字段解释</h5><p>procs</p>
+<p>​    ：r  运行和等待cpu时间片进程数，原则上1核cpu运行队列不要超过2，整个系统的运行队列不能超过总核数的2倍，否则代表系统压力过大</p>
+<p>​    ：b: 等待资源的进程数，比如正在等待磁盘I/O 网络I/O等</p>
+<p>cpu</p>
+<p>​    ：us 用户进程消耗CPU百分比</p>
+<p>​    ：sy 内核进程消耗的CPU时间百分比</p>
+<h5 id="pidstat"><a href="#pidstat" class="headerlink" title="pidstat"></a>pidstat</h5><p>每个进程使用cpu的用量分解信息</p>
+<p>pidstat -u 1 -p 进程编号</p>
+<h1 id="内存"><a href="#内存" class="headerlink" title="内存"></a>内存</h1><h5 id="free"><a href="#free" class="headerlink" title="free"></a>free</h5><p>查看总的内存</p>
+<h5 id="pidstat-p-进程号-r-采样间隔时间"><a href="#pidstat-p-进程号-r-采样间隔时间" class="headerlink" title="pidstat-p 进程号 -r 采样间隔时间"></a>pidstat-p 进程号 -r 采样间隔时间</h5><p>查看额外的    </p>
+<h1 id="磁盘"><a href="#磁盘" class="headerlink" title="磁盘"></a>磁盘</h1><p>df-h 查看磁盘剩余空间</p>
+<h1 id="磁盘IO"><a href="#磁盘IO" class="headerlink" title="磁盘IO"></a>磁盘IO</h1><p>iostat 磁盘 io性能评估</p>
+<h1 id="网络IO"><a href="#网络IO" class="headerlink" title="网络IO"></a>网络IO</h1><p>Ifstat</p>
+<h1 id="如果CPU占用过高，怎么分析和解决"><a href="#如果CPU占用过高，怎么分析和解决" class="headerlink" title="如果CPU占用过高，怎么分析和解决"></a>如果CPU占用过高，怎么分析和解决</h1><p>1 先用top命令查出cpu占比最高</p>
+<p>2 ps -ef或 jps进一步定位</p>
+<p>3 定位到具体线程或代码</p>
+<p>​    ps -mp 进程 -o THREAD,tid,time;</p>
+<p>4 将需要的线程ID转换为16进制 格式 (小写英文格式) （可以用计算机把ID转换为16进制）</p>
+<p>5 jstack 进程ID | grep tid(16进制的线程IO小写英文) -A60    （输出前60行信息）</p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖果<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://yoursite.com/2020/04/07/Linux/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/20/Mysql/" class="archive-article-date">
-  	<time datetime="2020-02-20T02:25:22.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2020/04/08/github/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          github
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/20/Mysql/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Mysql</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
+        
+        
+    </div>
+</aside>
+
+
+
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/20/Mysql/">Mysql</a>
-    </h1>
+  
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/20/java%E5%AE%B9%E5%99%A8%E5%92%8C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-  	<time datetime="2020-02-20T02:25:22.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/20/java%E5%AE%B9%E5%99%A8%E5%92%8C%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">java容器和基础知识</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/20/%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2020-02-20T02:25:22.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/20/%E9%9B%86%E5%90%88%E7%9B%B8%E5%85%B3/">集合相关</a>
-    </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/20/JVM/" class="archive-article-date">
-  	<time datetime="2020-02-20T02:25:22.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/20/JVM/">JVM</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
-  	<time datetime="2020-02-20T02:25:22.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/20/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E7%9B%B8%E5%85%B3%E6%A8%A1%E6%9D%BF/">数据结构相关模板</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/20/%E7%AE%80%E5%8E%86%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-  	<time datetime="2020-02-20T02:25:22.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/20/%E7%AE%80%E5%8E%86%E7%9B%B8%E5%85%B3/">简历相关</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/20/netty/" class="archive-article-date">
-  	<time datetime="2020-02-20T02:25:22.329Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-20</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/20/netty/">netty</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2020/02/10/java7%E5%92%8Cjava8%E7%9A%84%E4%B8%8D%E5%90%8C/" class="archive-article-date">
-  	<time datetime="2020-02-10T08:42:52.672Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-02-10</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2020/02/10/java7%E5%92%8Cjava8%E7%9A%84%E4%B8%8D%E5%90%8C/">java7和java8的不同</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/archives/2020/page/2/">2</a><a class="extend next" rel="next" href="/archives/2020/page/2/">Next &amp;raquo;</a>
-    </nav>
   
 
 
@@ -462,8 +363,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
